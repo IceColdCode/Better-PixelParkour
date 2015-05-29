@@ -1,3 +1,7 @@
+/* This class is for all images in the game, except the 
+ * Background
+ */
+
 package TileMap;
 
 import javax.imageio.ImageIO;
@@ -15,7 +19,7 @@ abstract class GameImage {
   // image
   BufferedImage image;
   
-  public void loadImage(String file);
-  
-  public void move();
+  public abstract void loadImage(String file);
+  public abstract void move();
+
 }
