@@ -13,7 +13,10 @@ class Sprite extends GameImage {
   private int dy;
   
   // imaging
-  LinkedList<BufferedImage> images = new LinkedList<BufferedImage>();;
+  public int numberOfImages = 10;
+  BufferedImage[numberOfImages] images;
+  
+  Graphics2D graphics;
   
   // getters and setters
   public void setXVector(int v) {
@@ -28,7 +31,13 @@ class Sprite extends GameImage {
   public int getX() {}
   public void setY(int y) {}
   public void getY() {}
-  public void draw(Graphics g) {}
+  
+  public void init(int x, int y) {
+    initAnimation();
+    draw(graphics,x, y);
+  }
+  public void initAnimation() {}
+  public void draw(Graphics g, int x, int y) {}
   public void move() {}
   
   /**
