@@ -13,10 +13,15 @@ class Sprite extends GameImage {
   private int dy;
   
   // imaging
+  public String[] paths;
   public int numberOfImages = 10;
+  public int index = 0;
   BufferedImage[numberOfImages] images;
   
   Graphics2D graphics;
+  
+  // animation thread
+  Thread animationThread = new Thread("Animation Thread", new Sprite())
   
   // getters and setters
   public void setXVector(int v) {
@@ -25,19 +30,35 @@ class Sprite extends GameImage {
   public int getXVector() {
     return dx;
   }
-  public void setYVector(int v) {}
-  public int getYVector() {}
-  public void setX(int x) {}
-  public int getX() {}
-  public void setY(int y) {}
-  public void getY() {}
+  public void setYVector(int v) {
+    this.dy = v;
+  }
+  public int getYVector() {
+    rturn dy;
+  }
+  public void setX(int x) {
+    this.x = x;
+  }
+  public int getX() {
+    return x;
+  }
+  public void setY(int y) {
+    this.y = y;
+  }
+  public void getY() {
+    return y;
+  }
   
   // methods
   public void init(int x, int y) {
-    initAnimation();
+    loadAnimation();
     draw(graphics,x, y);
   }
-  public void initAnimation() {}
+  public void loadAnimation(String[] paths) {
+    for(int i = 0; 1<paths.length; i++) {
+      images[i] = ImageIO.read(getClass.getResourceAsStream(paths[i]);
+    }
+  }
   public void draw(Graphics g, int x, int y) {
     
     for(BufferedImage image : this.images) {
@@ -45,8 +66,7 @@ class Sprite extends GameImage {
     }
     
   }
-  public void move() {}
-  public void play() {
+  public void play(int x, int y) {
     if(AnimationThread == null) {
       AnimationThread.start();
     }
@@ -59,27 +79,18 @@ class Sprite extends GameImage {
    * overloaded constructors
    * @param path
   **/
-  public void Sprite(String path) {
-    // this needs to change for the animatiion
-    try{
-      image = ImageIO.read(getClass().getResourceAsStream(path));
-    } catch(Exception e) {
-      e.printStackTrace();
-    }
+  public void Sprite(String[] paths) {
+    // this needs to change for the animation
+    this.paths = paths;
+    loadAnimation();
   }
   
   /**
    * @param path, x, y
   **/
-  public void Sprite(String path, int x, int y) {
-  try{
-    image = ImageIO.read(getClass().getResourceAsStream(path));
-  }catch (Exception e) {
-    e.printStackTrace();
-  }
-  draw(x, y);
-} 
-    
-  }
-  }
+  public void Sprite(String[] imgPaths, int x, int y) {
+    loadAnimation();
+    draw(x, y);
+  } 
+
 }
