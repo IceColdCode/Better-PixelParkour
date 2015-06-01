@@ -37,7 +37,13 @@ class Sprite extends GameImage {
     draw(graphics,x, y);
   }
   public void initAnimation() {}
-  public void draw(Graphics g, int x, int y) {}
+  public void draw(Graphics g, int x, int y) {
+    
+    for(BufferedImage image : this.images) {
+      g.drawImage(image, x, y, null);
+    }
+    
+  }
   public void move() {}
   
   /**
