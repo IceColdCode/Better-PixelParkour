@@ -27,6 +27,33 @@ class Sprite extends GameImage {
   public int getX() {}
   public void setY(int y) {}
   public void getY() {}
+  public void draw(Graphics g) {}
   public void move() {}
-  public void Sprite() {}
+  
+  /**
+   * overloaded constructors
+   * @param path
+  **/
+  public void Sprite(String path) {
+    try{
+      image = ImageIO.read(getClass().getResourceAsStream(path));
+    } catch(Exception e) {
+      e.printStackTrace();
+    }
+  }
+  
+  /**
+   * @param path, x, y
+  **/
+  public void Sprite(String path, int x, int y) {
+  try{
+    image = ImageIO.read(getClass().getResourceAsStream(path));
+  }catch (Exception e) {
+    e.printStackTrace();
+  }
+  draw(x, y);
+} 
+    
+  }
+  }
 }
