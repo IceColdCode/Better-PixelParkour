@@ -2,6 +2,7 @@ package TileMap;
 
 import java.awt.*;
 import javax.imageio.ImageIO;
+import java.util.*;
 
 class Sprite extends GameImage {
   
@@ -12,7 +13,7 @@ class Sprite extends GameImage {
   private int dy;
   
   // imaging
-  BufferedImage image;
+  LinkedList<BufferedImage> images = new LinkedList<BufferedImage>();;
   
   // getters and setters
   public void setXVector(int v) {
@@ -35,6 +36,7 @@ class Sprite extends GameImage {
    * @param path
   **/
   public void Sprite(String path) {
+    // this needs to change for the animatiion
     try{
       image = ImageIO.read(getClass().getResourceAsStream(path));
     } catch(Exception e) {
