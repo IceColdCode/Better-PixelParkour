@@ -13,15 +13,19 @@ class Sprite extends GameImage {
   private int dy;
   
   // imaging
-  public String[] paths;
   public int numberOfImages = 10;
   public int index = 0;
   BufferedImage[numberOfImages] images;
+  public String paths[numberOfImages];
+  
+  public void setImagesToBeLoaded(int index, String path) {
+    this.paths[index] = path;
+  }
   
   Graphics2D graphics;
   
   // animation thread
-  Thread animationThread = new Thread("Animation Thread", new Sprite())
+  Thread animationThread = new Thread("Animation Thread", new Sprite(this.imagePaths));
   
   // getters and setters
   public void setXVector(int v) {
