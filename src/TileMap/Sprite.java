@@ -32,6 +32,7 @@ class Sprite extends GameImage {
   public void setY(int y) {}
   public void getY() {}
   
+  // methods
   public void init(int x, int y) {
     initAnimation();
     draw(graphics,x, y);
@@ -45,6 +46,14 @@ class Sprite extends GameImage {
     
   }
   public void move() {}
+  public void play() {
+    if(AnimationThread == null) {
+      AnimationThread.start();
+    }
+    for (BufferedImage image : images) {
+      graphics.drawImage(image, x, y, null);
+    }
+  }
   
   /**
    * overloaded constructors
